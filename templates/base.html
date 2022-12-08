@@ -1,0 +1,23 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Short Link</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" name="button">create</button>
+        </form>
+        {% if token %}
+            <a href="{% url 'Home' token %}"><h3>localhost:8000/{{ token }}</h3></a>
+        {% endif %}
+    </div>
+</body>
+</html>
